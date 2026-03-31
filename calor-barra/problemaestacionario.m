@@ -11,14 +11,12 @@ f = 2;          % Fuente constante de calor
 % Armando sistema de ecuaciones
 
 % Vector b
-b = -2.*h^2*ones(n,1);  % sin condiciones iniciales
-b(1)=0;                 % condición inicial (borde=0)
-b(n)=0;                 % condición inicial (borde=0)
+b = -2.*h^2*ones(n,1);  % Sin condición inicial
+b(1)=0; b(n)=0;         % Temperatura inicial de los extremos
 
 % Matriz A
 a = zeros(n);           % matriz nula
-a(1,1)=1;               % condición inicial
-a(n,n)=1;               % condición inicial
+a(1,1)=1;  a(n,n)=1;    % condición inicial
 v = [1 -2 1];
 for i = 2:n-1
   for j = 1:3           % También puede ser  a(i,i-1:i+1) = v;
