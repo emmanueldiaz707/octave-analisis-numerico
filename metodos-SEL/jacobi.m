@@ -4,14 +4,13 @@ function x = jacobi(A,b,e,imax)
     % e: tolerancia
     % imax: tope de iteraciones
 
+    x_actual = zeros(length(b),1);
+
     % Descomposición
     % D = diag(diag(A));
     D_inv = diag(1./diag(A));
     L = tril(A,-1);
     U = triu(A,1);    
-
-    n = length(b);
-    x_actual = zeros(n,1);
 
     % Matrices auxiliares
     B = -D_inv * (L+U);
@@ -29,6 +28,6 @@ function x = jacobi(A,b,e,imax)
     x = x_actual;
 
     if i > imax
-        disp('Convergente!');
+        disp('Se alcanzó el límite de iteraciones!');
     end
 end
