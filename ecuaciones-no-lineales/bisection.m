@@ -1,18 +1,20 @@
 % Recibe función, intervalo [a,b] y error
-% Suponiendo que f(x) es continua y que f(a) y f(b) tienen distinto signo
+% Suponiendo que f(x) es continua
 function x = bisection(f,a,b,e)
-    i = a;
-    j = b;
+    if f(a)*f(b)>=0
+      error('f(a) y f(b) deben tener distinto signo');
+    endif
+
     k = 1;
 
-    while (((j-i)/(2^k) > e))
-        m = (i+j)/2;
-        if (f(m)>0) 
-            j = m;
-        elseif (f(m)<0)
-            i = m;
+    while (((b-a)/(2^k) > e))
+        m = (a+b)/2;
+        if (f(a)*f(m)<0) 
+            b = m;
+        elseif (f(a)*f(m)>0)
+            a = m;
         else
-            i = j;
+            a = b;
         endif
         k=k+1;
     endwhile
