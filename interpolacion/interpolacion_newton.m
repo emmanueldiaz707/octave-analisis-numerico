@@ -1,5 +1,6 @@
-% Recibe vectores x e y, devuelve vector de coeficientes a
 function a = interpolacion_newton(x,y)
+    % Recibe vectores x e y
+    % Devuelve vector de coeficientes a
     n = length(x);
     x = x(:); % convertir a vector columna 
     y = y(:);
