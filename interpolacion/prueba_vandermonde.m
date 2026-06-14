@@ -21,19 +21,24 @@ p = polyval(fliplr(a'),x0);
 
 % Graficar
 % plot(x,y,'*',x0,y0,'b',x0,p,'r');
-fig = figure(1);  % abre ventana de gráficos
-hold on;    % para aplicarle propiedades
-set(fig, 'graphicssmoothing', 'on'); % Antialiasing
-plot(x, y, '*', 'MarkerSize', 20, 'Color', [0.1 0.1 0.1]); % puntos originales
-plot(x0, y0, 'b', 'LineWidth', 2); % función original
-plot(x0, p, 'r', 'LineWidth', 2); % función interpolada
-set(gca, 'FontSize', 14);
-set(gca, 'LineWidth', 1.5);
+fig = figure(1);    % abre ventana de gráficos
+clf;                % limpia gráficos anteriores
+hold on;            % para aplicarle propiedades
+set(fig, 'graphicssmoothing', 'on');    % Antialiasing
+
+plot(x0, y0, 'b', 'LineWidth', 2);                      % función original
+plot(x0, p, 'r', 'LineWidth', 2);                       % función interpolada
+plot(x, y, 'k*', 'MarkerSize', 20, 'LineWidth', 0.5);   % nodos equidistantes
+
+set(gca, 'FontSize', 14);       % fuente de las etiquetas de los ejes
+set(gca, 'LineWidth', 1.5);     % grosor de los ejes
 grid on;
 title('Método de interpolación de Vandermonde', 'FontSize', 16);
 xlabel('Eje X', 'FontSize', 14);
 ylabel('Eje Y', 'FontSize', 14);
-legend('Puntos originales', 'Función original', 'Función interpolada', 'FontSize', 12, 'Location', 'north');
+legend('Función original', 'Función interpolada', 'Nodos equidistantes', 'FontSize', 12, 'Location', 'north');
+
+hold off;
 
 % Asteriscos:   puntos originales
 % Azul:         función original
